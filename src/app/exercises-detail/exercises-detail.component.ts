@@ -9,7 +9,7 @@ import { GlobalCommunicationService } from '../_helpers/globalcommunicationservi
 })
 export class ExercisesDetailComponent implements OnInit {
 
-  private video_path : string;
+  public video_path : string;
 
   constructor(private route: ActivatedRoute, private globalCommunictionService: GlobalCommunicationService) { 
     /* this.route.params.subscribe( params => {
