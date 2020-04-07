@@ -1,0 +1,36 @@
+<div class="main">
+    <div id="sidebar">
+            <div class="sidebar-header" id="sidebar-header-id">
+              
+            </div>
+            <ul class="list-unstyled components">
+              <li>
+                <a class="nav-link" [routerLink] = "'/admin'">
+                    <span class="menu-icon-wrap">
+                        <!--i class="material-icons" style="font-size:20px">people</i-->
+                    </span>
+                    VALIDAR VÍDEOS
+                </a>
+            </li>
+          </ul>
+    </div>
+    <div class="header">
+      <div class="container page_location">
+        <div class="row">
+            <div class="col-12">
+                {{messageOfTheRoute}}
+            </div>
+          </div>
+      </div>
+  
+    </div>
+    <div class="contentDiv">
+      <div class="specificContainer">
+        <div class="row">
+            <div class="col-md-12">
+              <router-outlet></router-outlet>
+            </div>
+        </div>
+      </div> 
+    </div>
+  </div>
