@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http'; 
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { GlobalCommunicationService } from './_helpers/globalcommunicationservice';
 
@@ -26,7 +26,6 @@ import { ExercisesDetailComponent } from './exercises-detail/exercises-detail.co
     LoginComponent,
     VideosComponent,
     AdminComponent,
-    FileSelectDirective,
     ExercisesComponent,
     ExercisesDetailComponent
   ],
@@ -34,7 +33,8 @@ import { ExercisesDetailComponent } from './exercises-detail/exercises-detail.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule
 
   ],
   providers: [
