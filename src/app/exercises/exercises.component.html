@@ -66,11 +66,11 @@
         <div class="row">
             <div id="main" class="col-12 exercicesContainer">
                 <div class="row">
-                    <div class="col-md-6" *ngFor="let video of videos; index as i">
-                        <div class="card col-md-6" style="margin-top: 30px;">
-                            <div class="card-body">
+                    <div class="col-6" *ngFor="let video of videos; index as i">
+                        <div class="card" style="margin-top: 30px; width:650px">
+                            <!-- <div class="card-body"> -->
                                 <h5 class="card-title">{{video.video_name}}</h5>
-                                <video style="height: 200px; width: 400px;" id="videoPlayer" controls muted="muted">
+                                <video style="height: 300px; width: 600px; margin-left: 10px;" id="videoPlayer" controls muted="muted">
                                     <source src="{{video.video_path}}" type="video/mp4"> 
                                 </video>
 
@@ -87,7 +87,7 @@
                                 <div class="progress" style="">
                                     <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
                                 </div> -->
-                            </div>
+                            <!-- </div> -->
                         </div>
                         <div class="col-md-6">
                             <button (click)="goTOExerciseDetail(video.video_path)">
