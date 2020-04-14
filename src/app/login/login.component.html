@@ -1,28 +1,125 @@
 <!--div id="login-wrap">
         <button (click)="onLoginClick(1,2)" class="btn btn-default btn-save"> Login</button>
 </div-->
-
-<div class="container h-80">
-        <div class="row align-items-center h-100">
-            <div class="col-3 mx-auto">
-                <div class="text-center">
-                    <!-- <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" /> -->
-                    <p id="profile-name" class="profile-name-card"></p>
-                    <form  class="form-signin">
-                        
-                    
-                        <input type="text" name="email" id="email" class="form-control form-group" [(ngModel)]="email" placeholder="email" required />
-                        <input type="password" name="password" id="inputPassword" class="form-control form-group" [(ngModel)]="password"  placeholder="password" required autofocus>
-                        <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="onLoginClick(email,password)">Entrar</button>
-                    </form><!-- /form -->
-                </div>
-                <div *ngIf="login_error">
-                    <div style="height: 80px; width: 260px; padding-top: 10px; color: white; background-color: rgb(243, 122, 122); font-size: 14px;">
-                        <span>
-                            {{error_message}}
-                        </span>
-                    </div>
-                </div>
-            </div>
+<div id="main">
+  <div class="login-left">
+    <div class="login-content">
+      <form class="form-signin">
+        <div class="input-wrap">
+          <label for="email">Nome de utilizador / Email</label>
+        <span class="fc-wrap"
+            ><input
+              type="text"
+              name="email"
+              id="email"
+              class="form-control form-group"
+              [(ngModel)]="email"
+              placeholder="email"
+              required
+            />
+          </span>
+        </div>
+        <div class="input-wrap">
+          <label for="password">Senha</label>
+          <span class="fc-wrap"
+            ><input
+              type="password"
+              name="password"
+              id="inputPassword"
+              class="form-control form-group"
+              [(ngModel)]="password"
+              placeholder="password"
+              required
+              autofocus
+            />
+          </span>
+        </div>
+        <button
+          class="btn btn-lg primary btn-block btn-signin"
+          (click)="onLoginClick(email, password)"
+        >
+          Entrar
+        </button>
+        <div class="input-wrap extra">
+          <a href="#" class="text-link">Esqueci-me da minha senha</a>
+        </div>
+        <span class="input-spacer">OU</span>
+        <button
+          class="btn btn-lg secondary btn-block btn-signin"
+          (click)="onLoginClick(email, password)"
+        >
+          Criar Conta
+        </button>
+      </form>
+      <div *ngIf="login_error">
+        <div
+          style="
+            height: 80px;
+            width: 260px;
+            padding-top: 10px;
+            color: white;
+            background-color: rgb(243, 122, 122);
+            font-size: 14px;
+          "
+        >
+          <span>
+            {{ error_message }}
+          </span>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="login-right"><span class="logo-placeholder">LOGO</span></div>
+  <!-- <div class="row align-items-center">
+      <div class="col-3 mx-auto">
+        <div class="text-center"> -->
+  <!-- <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" /> -->
+  <!-- <p id="profile-name" class="profile-name-card"></p>
+          <form class="form-signin">
+            <input
+              type="text"
+              name="email"
+              id="email"
+              class="form-control form-group"
+              [(ngModel)]="email"
+              placeholder="email"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              id="inputPassword"
+              class="form-control form-group"
+              [(ngModel)]="password"
+              placeholder="password"
+              required
+              autofocus
+            />
+            <button
+              class="btn btn-lg btn-primary btn-block btn-signin"
+              (click)="onLoginClick(email, password)"
+            >
+              Entrar
+            </button>
+          </form> -->
+  <!-- /form -->
+  <!-- </div> -->
+  <!-- <div *ngIf="login_error">
+          <div
+            style="
+              height: 80px;
+              width: 260px;
+              padding-top: 10px;
+              color: white;
+              background-color: rgb(243, 122, 122);
+              font-size: 14px;
+            "
+          >
+            <span>
+              {{ error_message }}
+            </span>
+          </div>
+        </div> -->
+  <!-- </div>
+    </div> -->
 </div>
