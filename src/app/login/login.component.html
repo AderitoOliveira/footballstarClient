@@ -1,10 +1,27 @@
-<!--div id="login-wrap">
+  <!--div id="login-wrap">
         <button (click)="onLoginClick(1,2)" class="btn btn-default btn-save"> Login</button>
 </div-->
 <div id="main">
   <div class="login-left">
     <div class="login-content">
       <form class="form-signin">
+        <div *ngIf="login_error">
+          <div
+            style="
+              height: 40px;
+              width: 450px;
+              padding-top: 10px;
+              margin-bottom: 20px;
+              color: white;
+              background-color: rgb(243, 122, 122);
+              font-size: 14px;
+            "
+          >
+            <span>
+              {{ error_message }}
+            </span>
+          </div>
+        </div>
         <div class="input-wrap">
           <label for="email">Nome de utilizador / Email</label>
         <span class="fc-wrap"
@@ -51,22 +68,6 @@
           Criar Conta
         </button>
       </form>
-      <div *ngIf="login_error">
-        <div
-          style="
-            height: 80px;
-            width: 260px;
-            padding-top: 10px;
-            color: white;
-            background-color: rgb(243, 122, 122);
-            font-size: 14px;
-          "
-        >
-          <span>
-            {{ error_message }}
-          </span>
-        </div>
-      </div>
     </div>
   </div>
   <div class="login-right"><span class="logo-placeholder">LOGO</span></div>
