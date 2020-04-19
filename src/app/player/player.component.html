@@ -80,64 +80,86 @@
 </div> -->
 
 <div class="main">
-  <div id="sidebar">
-          <div class="sidebar-header" id="sidebar-header-id">
-            
-          </div>
-          <ul class="list-unstyled components">
-            <li>
-              <a class="nav-link" [routerLink] = "'/player'">
-                  <span class="menu-icon-wrap">
-                  </span>
-                  COMUNIDADE
-              </a>
-              <a class="nav-link" [routerLink] = "'/player'">
+  <div class="container-fluid">
+    <div class="row">
+      <div id="sidebar" class="col-md-3">
+        <div class="sidebar-header" id="sidebar-header-id">
+
+        </div>
+        <ul class="list-unstyled components">
+          <li>
+            <a class="nav-link" [routerLink] = "'/player'">
                 <span class="menu-icon-wrap">
                 </span>
-                MENSAGENS
+                Comunidade
             </a>
+          </li>
+          <li>
             <a class="nav-link" [routerLink] = "'/player'">
               <span class="menu-icon-wrap">
               </span>
-              MEDALHAS
-            </a>
-            <a class="nav-link"  [routerLink] = "'videos'"  routerLinkActive="active">
-              <span class="menu-icon-wrap">
-              </span>
-              OS MEUS VIDEOS
-            </a>
-            <a class="nav-link" [routerLink] = "'exercices'" routerLinkActive="active">
-              <span class="menu-icon-wrap">
-              </span>
-              EXERCÍCIOS
-            </a>
-            <a class="nav-link" routerLink="videos" routerLinkActive="active">
-              <span class="menu-icon-wrap">
-              </span>
-              DESAFIO DA SEMANA
-            </a>
-            <a class="nav-link" routerLink="videos" routerLinkActive="active">
-              <span class="menu-icon-wrap">
-              </span>
-              DESAFIO DO MÊS
-            </a>
-            <a class="nav-link" routerLink="videos" routerLinkActive="active">
-              <span class="menu-icon-wrap">
-              </span>
-              DESAFIAR A COMUNIDADE
-            </a>
-            <a class="nav-link" routerLink="videos" routerLinkActive="active">
-              <span class="menu-icon-wrap">
-              </span>
-              EDITAR O MEU PERFIL
-            </a>
-            <a class="nav-link" (click)="logout()" routerLinkActive="active">
-              <span class="menu-icon-wrap">
-              </span>
-              Logout
-            </a>
-          </li>
-        </ul>
+              Mensagens
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink] = "'/player'">
+            <span class="menu-icon-wrap">
+            </span>
+            Medalhas
+          </a>
+        </li>
+        <li>
+          <a class="nav-link"  [routerLink] = "'videos'"  routerLinkActive="active">
+            <span class="menu-icon-wrap">
+            </span>
+            Os Meus Vídeos
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink] = "'exercices'" routerLinkActive="active">
+            <span class="menu-icon-wrap">
+            </span>
+            Exercícios
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="videos" routerLinkActive="active">
+            <span class="menu-icon-wrap">
+            </span>
+            Desafio da Semana
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="videos" routerLinkActive="active">
+            <span class="menu-icon-wrap">
+            </span>
+            Desafio do Mês
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="videos" routerLinkActive="active">
+            <span class="menu-icon-wrap">
+            </span>
+            Desafiar a Comunidade
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="videos" routerLinkActive="active">
+            <span class="menu-icon-wrap">
+            </span>
+            Editar o meu Perfil
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" (click)="logout()" routerLinkActive="active">
+            <span class="menu-icon-wrap">
+            </span>
+            Terminar Sessão
+          </a>
+        </li>
+      </ul>
+      </div>
+    </div>
   </div>
   <div class="header">
     <div class="container page_location">
@@ -147,7 +169,6 @@
           </div>
         </div>
     </div>
-
   </div>
   <div class="contentDiv">
     <div class="specificContainer">
