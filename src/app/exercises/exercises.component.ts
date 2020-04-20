@@ -19,7 +19,7 @@ const URL_BASE_UPLOAD       = 'http://localhost:3000/api/upload/';
 export class ExercisesComponent implements OnInit {
 
   videos : any = [];
-  private player_id : number;
+  private player_id         : number;
   maxFileSize = 20 * 1024 * 1024; // modify this to your desired max file size
 
   public uploader: FileUploader = new FileUploader({
@@ -167,9 +167,14 @@ export class ExercisesComponent implements OnInit {
     this.videos[index].file_loaded = true;
   }
 
-  goTOExerciseDetail(video_path : string) {
+  goTOExerciseDetail(exercise_level : number, video_path : string) {
 
-    this.globalCommunictionService.changeDataExchange(video_path);
+    let detailData = {
+      video_path     : video_path,
+      exercise_level : exercise_level
+    }
+
+    this.globalCommunictionService.changeDataExchange(detailData);
     this.router.navigate(['player', 'exercises_detail']);
     /* this.router.navigate(['./exercises_detail'], { relativeTo: this.activatedRoute, skipLocationChange: true }); */
   }
