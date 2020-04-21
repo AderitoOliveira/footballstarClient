@@ -31,7 +31,7 @@ button {
 }
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
   .specificContainer {
-    //width:1169px;
+    top: 100px !important;
     left: 160px;
     min-height: 520px;
     overflow: hidden;
@@ -50,6 +50,22 @@ button {
 
   .exercicesContainer {
     min-height: 520px;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    background-color: white;
+  }
+
+  .exercisesDetailContainer {
+    min-height: 520px;
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    background-color: white;
+  }
+
+  .exercisesDetailVideo {
+    height: 400px; 
+    width: 600px;
   }
 
   #content-general-container {
@@ -59,7 +75,7 @@ button {
 
 @media screen and (min-width: 1401px) {
   .specificContainer {
-    //width:1480px;
+    top: 100px !important;
     left: 160px;
     overflow: hidden;
     width: -webkit-fill-available;
@@ -68,6 +84,21 @@ button {
 
   .exercicesContainer {
     min-height: 890px;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    background-color: white;
+  }
+
+  .exercisesDetailContainer {
+    min-height: 890px;
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+  }
+
+  .exercisesDetailVideo {
+    height: 600px; 
+    width: 1000px;
   }
 
   #content-general-container {
@@ -234,12 +265,13 @@ html {
   padding: 5px;
   //margin-bottom: 10px;
   background-color: #dadada;
-  //top: 100px;
+  top: 100px !important;
 }
 
 .contentDiv {
   float: left;
-  margin-top: 40px;
+  //margin-top: 40px;
+  top: 100px !important;
   margin-left: 160px;
   background: transparent;
   position: relative;
@@ -363,6 +395,14 @@ html {
     margin-bottom: 20px;
   }
 }
+
+.exercisesDetailVideo {
+  //height: 600px; 
+  //width: 1000px;
+  padding-top: 30px;
+  margin-left:20px;
+}
+
 
 // FORMS
 

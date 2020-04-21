@@ -1,4 +1,4 @@
-<div id="content-general-container">
+<!-- <div id="content-general-container"> -->
     <div class="container-fluid">
         <!-- <div class="row exercises_level_header">
                 <div class="col-md-1 buttons">
@@ -65,11 +65,27 @@
         <div class="row">
             <div id="main" class="col-12 exercicesContainer">
                 <div class="row">
-                    <video style="height: 400px; width: 600px;" id="videoPlayer" controls muted="muted">
-                        <source src="{{video_path}}" type="video/mp4"> 
-                    </video> 
+                    <div class="col-9">
+                        <video class="exercisesDetailVideo" id="videoPlayer" controls muted="muted">
+                            <source src="{{video_path}}" type="video/mp4"> 
+                        </video> 
+                    </div>
+                    <div class="col-3">
+                        <div class="col-6 buttons">
+                            <input type="file" name="image"  ng2FileSelect [uploader]="uploader" accept="video/mp4" style="display: none"  #fileUploader>
+                            <button (click)="fileUploader.click()">
+                                Select File
+                            </button>
+                            <button *ngIf="uploader.queue[0]" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                                Upload
+                            </button>
+                            <div *ngIf="uploader.queue[0]">
+                                {{uploader.queue[0].file?.name}}
+                            </div>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+<!-- </div> -->
