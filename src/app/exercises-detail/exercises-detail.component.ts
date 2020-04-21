@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GlobalCommunicationService } from '../_helpers/globalcommunicationservice';
+import { excerciseDetailData} from '../_models/exercise_detail'
 
 @Component({
   selector: 'app-exercises-detail',
@@ -10,8 +11,11 @@ import { GlobalCommunicationService } from '../_helpers/globalcommunicationservi
 export class ExercisesDetailComponent implements OnInit {
 
   public video_path : string;
+  public excercise_level : number;
+  public dataFromParent : excerciseDetailData;
 
-  constructor(private route: ActivatedRoute, private globalCommunictionService: GlobalCommunicationService) { 
+
+  constructor(private route: ActivatedRoute, private globalCommunicationService: GlobalCommunicationService) { 
     /* this.route.params.subscribe( params => {
       console.log(params);
     });
@@ -24,7 +28,13 @@ export class ExercisesDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    this.globalCommunictionService.currentData.subscribe(message => this.video_path = message)
+    //this.globalCommunictionService.currentData.subscribe(message => this.video_path = message)
+    this.globalCommunicationService.currentData.subscribe(data => {
+            this.video_path = data.video_path;
+            this.excercise_level = data.exercise_level
+    });
+    console.log(this.video_path);
+    console.log(this.excercise_level);
   }
 
 }
