@@ -74,7 +74,7 @@
                         <div class="col-6 buttons">
                             <input type="file" name="image"  ng2FileSelect [uploader]="uploader" accept="video/mp4" style="display: none"  #fileUploader>
                             <button (click)="fileUploader.click()">
-                                Select File
+                                Carregar Ficheiro
                             </button>
                             <button *ngIf="uploader.queue[0]" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
                                 Upload

@@ -107,13 +107,14 @@ export class ExercisesComponent implements OnInit {
     for(let i=0; i < data.length; i++) {
       let exercise_level  = data[i].EXERCISE_LEVEL;
       let video_name      = data[i].VIDEO_NAME;
+      let exercise_number = data[i].EXERCISE_NUMBER;
       console.log("XPTO: " + data[i]);
 
       let video_structure = {
         video_path      : URL_BASE + exercise_level + '/' + video_name,
         video_name      : video_name,
         exercise_level  : 1,
-        exercise_id     : 1,
+        exercise_number : exercise_number,
         file_loaded     : false
       }
 
@@ -167,11 +168,12 @@ export class ExercisesComponent implements OnInit {
     this.videos[index].file_loaded = true;
   }
 
-  goTOExerciseDetail(exercise_level : number, video_path : string) {
+  goToExerciseDetail(exercise_level : number, exercise_number : number, video_path : string) {
 
     let detailData = {
-      video_path     : video_path,
-      exercise_level : exercise_level
+      video_path      : video_path,
+      exercise_level  : exercise_level,
+      exercise_number : exercise_number
     }
 
     this.globalCommunictionService.changeDataExchange(detailData);
