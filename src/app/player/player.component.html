@@ -82,101 +82,106 @@
 <div class="main">
   <div class="container-fluid">
     <div class="row">
-      <div id="sidebar" class="col-md-3">
-        <div class="sidebar-header" id="sidebar-header-id">
-
+      <div class="col-md-12 header">
+        <div class="page_location">
+          <div class="header-part header-left">
+            <div class="logo">
+              <a href="/"><span class="logo-placeholder">LOGO</span></a>
+            </div>
+            <div class="route">{{ messageOfTheRoute }}</div>
+          </div>
+          <div class="header-part header-right">
+            <div class="user-info">
+              <span class="name"><a href="#">Adérito Oliveira</a></span>
+              <span class="location"><a href="#">Braga, Portugal</a></span>
+              <span class="links"><a href="#">A minha conta</a></span>
+            </div>
+            <div class="user-picture">
+              <img src="../../assets/user.png" width="96px" height="96px">
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="sidebar" class="col-md-2">
+        <div class="sidebar-header" id="sidebar-header-id"></div>
         <ul class="list-unstyled components">
           <li>
-            <a class="nav-link" [routerLink] = "'/player'">
-                <span class="menu-icon-wrap">
-                </span>
-                Comunidade
+            <a class="nav-link" [routerLink]="'/player'">
+              <span class="menu-icon-wrap"> </span>
+              Comunidade
             </a>
           </li>
           <li>
-            <a class="nav-link" [routerLink] = "'/player'">
-              <span class="menu-icon-wrap">
-              </span>
+            <a class="nav-link" [routerLink]="'/player'">
+              <span class="menu-icon-wrap"> </span>
               Mensagens
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" [routerLink] = "'/player'">
-            <span class="menu-icon-wrap">
-            </span>
-            Medalhas
-          </a>
-        </li>
-        <li>
-          <a class="nav-link"  [routerLink] = "'videos'"  routerLinkActive="active">
-            <span class="menu-icon-wrap">
-            </span>
-            Os Meus Vídeos
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" [routerLink] = "'exercices'" routerLinkActive="active">
-            <span class="menu-icon-wrap">
-            </span>
-            Exercícios
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" routerLink="videos" routerLinkActive="active">
-            <span class="menu-icon-wrap">
-            </span>
-            Desafio da Semana
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" routerLink="videos" routerLinkActive="active">
-            <span class="menu-icon-wrap">
-            </span>
-            Desafio do Mês
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" routerLink="videos" routerLinkActive="active">
-            <span class="menu-icon-wrap">
-            </span>
-            Desafiar a Comunidade
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" routerLink="videos" routerLinkActive="active">
-            <span class="menu-icon-wrap">
-            </span>
-            Editar o meu Perfil
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" (click)="logout()" routerLinkActive="active">
-            <span class="menu-icon-wrap">
-            </span>
-            Terminar Sessão
-          </a>
-        </li>
-      </ul>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" [routerLink]="'/player'">
+              <span class="menu-icon-wrap"> </span>
+              Medalhas
+            </a>
+          </li>
+          <li>
+            <a
+              class="nav-link"
+              [routerLink]="'videos'"
+              routerLinkActive="active"
+            >
+              <span class="menu-icon-wrap"> </span>
+              Os Meus Vídeos
+            </a>
+          </li>
+          <li>
+            <a
+              class="nav-link"
+              [routerLink]="'exercices'"
+              routerLinkActive="active"
+            >
+              <span class="menu-icon-wrap"> </span>
+              Exercícios
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" routerLink="videos" routerLinkActive="active">
+              <span class="menu-icon-wrap"> </span>
+              Desafio da Semana
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" routerLink="videos" routerLinkActive="active">
+              <span class="menu-icon-wrap"> </span>
+              Desafio do Mês
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" routerLink="videos" routerLinkActive="active">
+              <span class="menu-icon-wrap"> </span>
+              Desafiar a Comunidade
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" routerLink="videos" routerLinkActive="active">
+              <span class="menu-icon-wrap"> </span>
+              Editar o meu Perfil
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" (click)="logout()" routerLinkActive="active">
+              <span class="menu-icon-wrap"> </span>
+              Terminar Sessão
+            </a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </div>
-  <div class="header">
-    <div class="container page_location">
-      <div class="row">
-          <div class="col-12">
-              {{messageOfTheRoute}}
-          </div>
+      <div class="col-md-9 offset-md-2 contentDiv">
+        <div class="specificContainer">
+          <router-outlet></router-outlet>
         </div>
-    </div>
-  </div>
-  <div class="contentDiv">
-    <div class="specificContainer">
-      <div class="row">
-          <div class="col-md-12">
-            <router-outlet></router-outlet>
-          </div>
       </div>
-    </div> 
+    </div>
   </div>
 </div>

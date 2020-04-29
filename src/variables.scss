@@ -1,0 +1,11 @@
+//Spacing and Grid
+$verticalspace: 14px;
+$grid-gutter-width: $verticalspace + $verticalspace !default;
+$baseline: 12px;
+
+//Colors and gradients
+$black-gradient: linear-gradient(to right, #4d4d4d, #000);
+$gray-gradient: linear-gradient(to right, #fff, #ccc);
+
+//Header
+$headerheight: calc(#{$baseline} * 10);

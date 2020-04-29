@@ -1,7 +1,6 @@
-
 <!--  <div id="content-general-container"> -->
-    <div class="container-fluid">
-        <div class="row exercises_level_header">
+<div class="container-fluid">
+  <!-- <div class="row exercises_level_header">
                 <div class="col-md-1 buttons">
                         <span class="menu-icon-wrap">
                             <img src="assets/icons/locker.svg" width="20px" height="18px">
@@ -62,19 +61,79 @@
                     </span>
                     <button (click)="getAllPlayerVideos(10)">Nível 10</button> 
                 </div>
+        </div> -->
+  <div class="level-nav col-md-1">
+    <ul id="levels">
+      <li class="level-item unlocked active">
+        <button (click)="getAllPlayerVideos(1)">1</button>
+      </li>
+      <li class="level-item unlocked">
+        <button (click)="getAllPlayerVideos(2)">2</button>
+      </li>
+      <li class="level-item">
+        <button (click)="getAllPlayerVideos(3)">3</button>
+      </li>
+      <li class="level-item">
+        <button (click)="getAllPlayerVideos(4)">4</button>
+      </li>
+      <li class="level-item">
+        <button (click)="getAllPlayerVideos(5)">5</button>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div id="main" class="exercisesContainer">
+      <section id="level1">
+        <div class="row">
+          <div class="section-header col-md-12">
+            <h2 class="level-name">Nível 1</h2>
+            <span class="level-status">
+              <svg
+                width="32"
+                height="42"
+                viewBox="0 0 32 42"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 32C18.2 32 20 30.2 20 28C20 25.8 18.2 24 16 24C13.8 24 12 25.8 12 28C12 30.2 13.8 32 16 32ZM28 14H26V10C26 4.48 21.52 0 16 0C10.48 0 6 4.48 6 10H9.8C9.8 6.58 12.58 3.8 16 3.8C19.42 3.8 22.2 6.58 22.2 10V14H4C1.8 14 0 15.8 0 18V38C0 40.2 1.8 42 4 42H28C30.2 42 32 40.2 32 38V18C32 15.8 30.2 14 28 14ZM28 38H4V18H28V38Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
         </div>
         <div class="row">
-            <div id="main" class="col-12 exercicesContainer">
-                <div class="row">
-                    <div class="col-6" *ngFor="let video of videos; index as i">
-                        <div class="card" style="margin-top: 30px; width:650px">
-                            <!-- <div class="card-body"> -->
-                                <h5 class="card-title">{{video.video_name}}</h5>
+          <div class="col-md-4" *ngFor="let video of videos; index as i">
+            <div
+              class="video-card"
+              (click)="
+                goTOExerciseDetail(video.exercise_level, video.video_path)
+              "
+            >
+              <div class="image-container">
+                <div class="video-bg">
+                  <video class="exercise-video" controls muted="muted">
+                    <source src="{{ video.video_path }}" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="image-overlay"></div>
+              </div>
+              <div class="card-interactions">
+                <h4 class="card-title">{{ video.video_name }}</h4>
+                <p class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam
+                </p>
+              </div>
+              <!-- <div class="card-body"> -->
+              <!-- <h5 class="card-title">{{video.video_name}}</h5>
                                 <video style="height: 300px; width: 600px; margin-left: 10px;" id="videoPlayer" controls muted="muted">
                                     <source src="{{video.video_path}}" type="video/mp4"> 
-                                </video>
+                                </video> -->
 
-                                <!-- <input type="file" name="image"  ng2FileSelect [uploader]="uploader" (change)="selectedFileOnChanged(i)" accept="video/mp4" style="display: none"  #fileUploader>
+              <!-- <input type="file" name="image"  ng2FileSelect [uploader]="uploader" (change)="selectedFileOnChanged(i)" accept="video/mp4" style="display: none"  #fileUploader>
                                 <button (click)="fileUploader.click()">
                                     Select File
                                 </button>
@@ -87,16 +146,12 @@
                                 <div class="progress" style="">
                                     <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
                                 </div> -->
-                            <!-- </div> -->
-                        </div>
-                        <div class="col-md-6">
-                            <button (click)="goTOExerciseDetail(video.exercise_level, video.video_path)">
-                                Select File
-                            </button>
-                        </div>
-                    </div> 
-                </div>
+              <!-- </div> -->
             </div>
+          </div>
         </div>
+      </section>
     </div>
+  </div>
+</div>
 <!-- </div> -->

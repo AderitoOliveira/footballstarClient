@@ -1,12 +1,85 @@
+@import "../../variables.scss";
+
+.page_location {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  padding: $baseline 0px;
+  .header- {
+    &part {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+    }
+    &left {
+      justify-content: flex-start;
+      align-items: center;
+    }
+    &right {
+      justify-content: flex-end;
+      .user-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-right:$verticalspace;
+        span.location,
+        span.name {
+          font-family: "Roboto Condensed", sans-serif;
+        }
+        a {
+          color: #000;
+        }
+        span.name {
+          font-size:28px;
+        }
+        span.location {
+          font-size: 18px;
+        }
+
+        span.links {
+          text-transform: uppercase;
+          a {
+            text-decoration: underline;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  width: calc(#{$baseline} * 8);
+  height: calc(#{$baseline} * 8);
+  border-radius: 100%;
+  border: 2px solid #000;
+  color: #000;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right:$verticalspace;
+  a {
+    color: #000;
+  }
+}
+
 #sidebar {
   padding: 0px;
+  padding-right: $verticalspace;
   text-align: center;
+  background: transparent;
   ul.list-unstyled.components {
     float: left;
     width: 100%;
+    height: 100%;
     padding: 0px;
+    border: none;
+    border-right: 1px solid black;
     li {
-      height: 66px;
+      height: 44px;
       justify-content: center;
       display: flex;
       align-items: center;
@@ -20,10 +93,11 @@
         align-items: center;
         font-family: "Roboto Condensed", sans-serif;
         text-transform: capitalize;
-        font-size:16px;
-        border-bottom:1px solid #000;
-        &.active, &:hover{
-            background:linear-gradient(to right, #fff, #cdcdcd)
+        font-size: 16px;
+        border-bottom: 1px solid #000;
+        &.active,
+        &:hover {
+          background: linear-gradient(to right, #fff, #cdcdcd);
         }
         span.menu-icon-wrap {
           display: none;

@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "variables.scss";
+
+@import "../node_modules/bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@400;700&display=swap");
+
+
 
 /*
 * {
@@ -15,8 +19,6 @@
        -moz-box-sizing: content-box;
             box-sizing: content-box;
 } */
-
-$black-gradient: linear-gradient(to right, #4d4d4d, #000);
 
 body {
   font-family: "Roboto", sans-serif;
@@ -64,7 +66,7 @@ button {
   }
 
   .exercisesDetailVideo {
-    height: 400px; 
+    height: 400px;
     width: 600px;
   }
 
@@ -97,7 +99,7 @@ button {
   }
 
   .exercisesDetailVideo {
-    height: 600px; 
+    height: 600px;
     width: 1000px;
   }
 
@@ -128,18 +130,17 @@ html {
 
 #sidebar {
   transition: all 0.3s;
-  width: 160px;
+  //width: 160px;
   background-color: #ffffff; //#e2e2e2; This is the grey colour
   min-width: 160px;
   position: fixed;
-  height: 100vh;
+  height: calc(100vh - #{$headerheight});
+  margin-top:$headerheight;
   z-index: 2;
-  margin-top: 2px;
   /* border-width: 5px;
     border-style: solid;
     border: #f9f9f9;
     box-shadow: inset 0 -1px 2px 0 rgba(0, 0, 0, 0.25); */
-  top: 100px !important;
   .sidebar-header {
     background: transparent;
     background-color: #ffffff;
@@ -162,7 +163,6 @@ html {
     float: left;
     padding: 0px;
     margin-bottom: 0px;
-    border: none !important;
     li {
       color: #fff;
       a {
@@ -240,19 +240,16 @@ html {
 }
 
 .header {
-  height: 100px;
+  height: calc(#{$headerheight} + 1px);
+  border-bottom:1px solid black;
   width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
   width: -moz-available; /* WebKit-based browsers will ignore this. */
-  position: fixed;
-  top: 0;
   //left: 0;
   background-color: rgb(255, 255, 255);
   overflow-x: hidden;
   //margin-left: 160px;
-  border: #f9f9f9;
-  border-width: 2px;
-  border-style: solid;
   z-index: 2;
+  position:fixed;
   /* border-radius: 4px;
     box-shadow: inset 0 -1px 2px 0 rgba(0, 0, 0, 0.25); */
 }
@@ -271,12 +268,10 @@ html {
 .contentDiv {
   float: left;
   //margin-top: 40px;
-  top: 100px !important;
-  margin-left: 160px;
   background: transparent;
   position: relative;
   z-index: 1;
-  //padding-top: 72px;
+  padding-top: $headerheight;
   //padding-bottom: 72px;
   width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
   width: -moz-available; /* WebKit-based browsers will ignore this. */
@@ -363,13 +358,13 @@ html {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //CSS for the NAME of the page where we are located (clientes, vehicles)
-.page_location {
+/* .page_location {
   top: 50%;
   margin-top: 15px;
   margin-left: 0px;
   font-size: 20px;
   font-weight: bold;
-}
+} */
 
 //Exercises Container
 .rightSideBar {
@@ -397,12 +392,11 @@ html {
 }
 
 .exercisesDetailVideo {
-  //height: 600px; 
+  //height: 600px;
   //width: 1000px;
   padding-top: 30px;
-  margin-left:20px;
+  margin-left: 20px;
 }
-
 
 // FORMS
 
@@ -420,7 +414,7 @@ form {
     margin-bottom: 0;
     &:focus {
       outline: none;
-      box-shadow:none;
+      box-shadow: none;
       border-color: #000;
     }
   }
@@ -429,7 +423,7 @@ form {
     height: 66px;
     &:focus {
       outline: none;
-      box-shadow:none;
+      box-shadow: none;
     }
     &.primary {
       background: $black-gradient;
@@ -438,7 +432,7 @@ form {
     }
     &.secondary {
       color: #000;
-      background: linear-gradient(to right, #fff, #ccc);
+      background: $gray-gradient;
       border: 1px solid #ccc;
     }
   }
@@ -459,9 +453,9 @@ form {
   }
 }
 a.text-link {
-    color: #000;
-    text-decoration: underline;
-    font-size: 14px;
-    margin:18px 0px;
-    float:left;
+  color: #000;
+  text-decoration: underline;
+  font-size: 14px;
+  margin: 18px 0px;
+  float: left;
 }

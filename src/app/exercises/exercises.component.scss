@@ -1,0 +1,81 @@
+@import "../../variables.scss";
+
+.level-nav {
+  position: fixed;
+  top: 120px;
+  right: 0px;
+  ul#levels {
+    display: flex;
+    flex-direction: column;
+    margin-top: $baseline * 5;
+    padding:0px;
+    li{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:not(:first-child){
+            margin-top: $baseline * 5;
+            position: relative;
+            &:before{
+                content:'';
+                position:absolute;
+                bottom:100%;
+                height:$baseline * 5;
+                background:#C4C4C4;
+                width:2px;
+            }
+        }
+        button {
+            width:  $baseline * 2;
+            height: $baseline * 2;
+            border-radius: 100%;
+            border: 0;
+            background:#C4C4C4;
+            color:#C4C4C4;
+        }
+        &.unlocked{
+            button{
+                background:#000;
+                color:#000;
+            }
+            &:before{
+                background:#000; 
+            }
+            &.active{
+                button{
+                    width:  $baseline * 4;
+                    height: $baseline * 4;
+                    color:white;  
+                    font-size:28px;
+                }
+                
+            }
+        }
+    }
+  }
+}
+.section-header {
+  flex-direction: row;
+  display: flex;
+  margin-top: $baseline * 5;
+  margin-bottom: $baseline * 2;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #ccc;
+  height: $baseline * 7;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    margin: 0;
+  }
+}
+
+.video-card {
+  border: 1px solid #000;
+  margin-bottom: $baseline * 4;
+  video {
+    max-width: 100%;
+  }
+  .card-interactions {
+    padding: $baseline * 1.5 $baseline;
+  }
+}
