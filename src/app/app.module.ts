@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { JwtModule } from "@auth0/angular-jwt";
 import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { AlertModule } from './_alert';
+
 import { FormsModule } from '@angular/forms';
 import { VideosComponent } from './videos/videos.component';
 import { AdminComponent } from './admin/admin.component';
@@ -36,6 +38,7 @@ import { ExercisesDetailComponent } from './exercises-detail/exercises-detail.co
     HttpClientModule,
     FormsModule,
     FileUploadModule,
+    AlertModule,
     JwtModule.forRoot({
       config: {
       }

@@ -10,10 +10,10 @@ export class ExerciseDetailService {
 
     constructor(private httpClient: HttpClient) { }
     
-    uploadVideoInfoToDatabase(player_id : number, file_name : string) {
+    uploadVideoInfoToDatabase(player_id : number, file_name : string, exercise_level : number, exercise_number : number) {
         //this.httpClient.post('http://localhost:3000/insertVideoInfoToDatabase', { player_id, filename }).pipe(map((res:any) => res)) 
 
-        this.httpClient.post(`${environment.apiUrl}/insertVideoInfoToDatabase`, { player_id, file_name }).subscribe({
+        this.httpClient.post(`${environment.apiUrl}/insertVideoInfoToDatabase`, { player_id, file_name, exercise_level,  exercise_number}).subscribe({
         //next: data => this.postId = data.id,
         error: error => console.error('There was an error!', error)
         })

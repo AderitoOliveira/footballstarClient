@@ -6,6 +6,7 @@ import { User } from '@app/_models/user';
 import { AuthenticationService } from './../_services/authentication.service';
 import { ExerciseDetailService } from './exercises-detail.service';
 
+import { AlertService } from '../_alert';
 import { GlobalCommunicationService } from '../_helpers/globalcommunicationservice';
 import { excerciseDetailData} from '../_models/exercise_detail';
 
@@ -21,6 +22,7 @@ export class ExercisesDetailComponent implements OnInit {
 
   public video_path : string;
   public excercise_level : number;
+  public excercise_number : number;
   private user : User;
   private player_id : number;
   public dataFromParent : excerciseDetailData;
@@ -29,7 +31,8 @@ export class ExercisesDetailComponent implements OnInit {
     itemAlias: 'image'
   });
 
-  constructor(private route: ActivatedRoute, private authenticationService: AuthenticationService, private exerciseDetailService : ExerciseDetailService, private globalCommunicationService: GlobalCommunicationService) { 
+  constructor(private route: ActivatedRoute, private authenticationService: AuthenticationService, private exerciseDetailService : ExerciseDetailService, 
+              private globalCommunicationService: GlobalCommunicationService, protected alertService: AlertService) { 
     
     this.user       = authenticationService.currentUserValue;
     this.player_id  = authenticationService.currentUserValue.player_id;
@@ -46,8 +49,9 @@ export class ExercisesDetailComponent implements OnInit {
 
     //this.globalCommunictionService.currentData.subscribe(message => this.video_path = message)
     this.globalCommunicationService.currentData.subscribe(data => {
-            this.video_path = data.video_path;
-            this.excercise_level = data.exercise_level
+            this.video_path       = data.video_path;
+            this.excercise_level  = data.exercise_level;
+            this.excercise_number = data.exercise_number
     });
     console.log(this.video_path);
     console.log(this.excercise_level);
@@ -64,7 +68,8 @@ export class ExercisesDetailComponent implements OnInit {
     this.uploader.onCompleteItem = (item: any, status: any) => {
       if(JSON.parse(status).success == true) {
         console.log('Uploaded File Details:', item);
-        this.exerciseDetailService.uploadVideoInfoToDatabase(this.player_id, item._file.name);
+        this.exerciseDetailService.uploadVideoInfoToDatabase(this.player_id, item._file.name, this.excercise_level, this.excercise_number);
+        this.alertService.success('O Ficheiro foi carregado com Sucesso!!'); //, { autoClose: true });
         let video_structure = {
           video_path  : URL_BASE + this.player_id + '/' + item._file.name,
           video_name  : item._file.name
