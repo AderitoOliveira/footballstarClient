@@ -16,13 +16,16 @@ import { GlobalCommunicationService } from '../_helpers/globalcommunicationservi
 export class PlayerComponent implements OnInit {
 
   loading = false;
-  currentUser: User;
-  userFromApi: User;
-
+  currentUser : User;
+  userFromApi : User;
+  firstName   : string;
+  lastName    : string;
   messageOfTheRoute : string;
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService, private globalCommunictionService: GlobalCommunicationService, private router: Router) { 
       this.currentUser = this.authenticationService.currentUserValue;
+      this.firstName   = this.currentUser.firstName;
+      this.lastName   = this.currentUser.lastName;
   }
 
   ngOnInit() {
