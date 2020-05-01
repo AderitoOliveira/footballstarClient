@@ -99,7 +99,7 @@ export class ExercisesComponent implements OnInit {
   }
 
   getAllPlayerVideos(exercise_level : number) : any {
-    this.exerciseService.getVideosOfExerciseLevel(exercise_level).subscribe(data=> {
+    this.exerciseService.getVideosOfExerciseLevel(exercise_level, this.player_id).subscribe(data=> {
     console.log(data); 
     this.videos = [];
     this.uploader.queue = [];
