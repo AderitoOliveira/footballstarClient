@@ -179,7 +179,7 @@
       </div>
       <div class="col-md-9 offset-md-2 contentDiv">
         <div class="specificContainer">
-          <router-outlet></router-outlet>
+          <router-outlet (activate)="onActivate($event)"></router-outlet>
         </div>
       </div>
     </div>

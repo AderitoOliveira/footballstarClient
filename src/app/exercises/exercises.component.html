@@ -1,20 +1,32 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="level-nav col-md-1">
     <ul id="levels">
-      <li class="level-item unlocked active">
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 1}">
         <button (click)="getAllPlayerVideos(1)">1</button>
       </li>
-      <li class="level-item unlocked">
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 2}">
         <button (click)="getAllPlayerVideos(2)">2</button>
       </li>
-      <li class="level-item">
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 3}">
         <button (click)="getAllPlayerVideos(3)">3</button>
       </li>
-      <li class="level-item">
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 4}">
         <button (click)="getAllPlayerVideos(4)">4</button>
       </li>
-      <li class="level-item">
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 5}">
         <button (click)="getAllPlayerVideos(5)">5</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 6}">
+        <button (click)="getAllPlayerVideos(6)">6</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 7}">
+        <button (click)="getAllPlayerVideos(7)">7</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 8}">
+        <button (click)="getAllPlayerVideos(8)">8</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 9}">
+        <button (click)="getAllPlayerVideos(9)">9</button>
       </li>
     </ul>
   </div>
@@ -24,6 +36,131 @@
         <div class="row">
           <div class="section-header col-md-12">
             <h2 class="level-name">Nível 1</h2>
+            <span class="level-status">
+              <svg
+                width="32"
+                height="42"
+                viewBox="0 0 32 42"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 32C18.2 32 20 30.2 20 28C20 25.8 18.2 24 16 24C13.8 24 12 25.8 12 28C12 30.2 13.8 32 16 32ZM28 14H26V10C26 4.48 21.52 0 16 0C10.48 0 6 4.48 6 10H9.8C9.8 6.58 12.58 3.8 16 3.8C19.42 3.8 22.2 6.58 22.2 10V14H4C1.8 14 0 15.8 0 18V38C0 40.2 1.8 42 4 42H28C30.2 42 32 40.2 32 38V18C32 15.8 30.2 14 28 14ZM28 38H4V18H28V38Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let video of videos_level_1; index as i">
+            <div class="video-card" (click)="goToExerciseDetail(video.exercise_level, video.exercise_number, video.video_path)">
+              <div class="image-container">
+                <div class="video-bg">
+                  <video class="exercise-video" controls muted="muted">
+                    <source src="{{ video.video_path }}" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="image-overlay"></div>
+              </div>
+              <div class="card-interactions">
+                <h4 class="card-title">{{ video.video_name }}</h4>
+                <p class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam
+                </p>
+                <div class="row">
+                  <div class="col-md-6" *ngIf="video.video_uploaded" style="background-color: blue;">
+                    <p>Ok icon: <span class="glyphicon glyphicon-ok"></span></p>   
+                  </div>
+                  <div class="col-md-6" *ngIf="login_error" style="background-color:crimson;">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <section id="level1" #Level2>
+        <div class="row">
+          <div class="section-header col-md-12">
+            <h2 class="level-name">Nível 2</h2>
+            <span class="level-status">
+              <svg
+                width="32"
+                height="42"
+                viewBox="0 0 32 42"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 32C18.2 32 20 30.2 20 28C20 25.8 18.2 24 16 24C13.8 24 12 25.8 12 28C12 30.2 13.8 32 16 32ZM28 14H26V10C26 4.48 21.52 0 16 0C10.48 0 6 4.48 6 10H9.8C9.8 6.58 12.58 3.8 16 3.8C19.42 3.8 22.2 6.58 22.2 10V14H4C1.8 14 0 15.8 0 18V38C0 40.2 1.8 42 4 42H28C30.2 42 32 40.2 32 38V18C32 15.8 30.2 14 28 14ZM28 38H4V18H28V38Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let video of videos_level_2; index as i">
+            <div class="video-card" (click)="goToExerciseDetail(video.exercise_level, video.exercise_number, video.video_path)">
+              <div class="image-container">
+                <div class="video-bg">
+                  <video class="exercise-video" controls muted="muted">
+                    <source src="{{ video.video_path }}" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="image-overlay"></div>
+              </div>
+              <div class="card-interactions">
+                <h4 class="card-title">{{ video.video_name }}</h4>
+                <p class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam
+                </p>
+                <div class="row">
+                  <div class="col-md-6" *ngIf="video.video_uploaded" style="background-color: blue;">
+                    <p>Ok icon: <span class="glyphicon glyphicon-ok"></span></p>   
+                  </div>
+                  <div class="col-md-6" *ngIf="login_error" style="background-color:crimson;">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="level3" *ngIf="showLevel && level_id<2">
+        <div class="row">
+          <div class="section-header col-md-12">
+            <h2 class="level-name">Nível 3</h2>
+            <span class="level-status">
+              <svg
+                width="32"
+                height="42"
+                viewBox="0 0 32 42"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 32C18.2 32 20 30.2 20 28C20 25.8 18.2 24 16 24C13.8 24 12 25.8 12 28C12 30.2 13.8 32 16 32ZM28 14H26V10C26 4.48 21.52 0 16 0C10.48 0 6 4.48 6 10H9.8C9.8 6.58 12.58 3.8 16 3.8C19.42 3.8 22.2 6.58 22.2 10V14H4C1.8 14 0 15.8 0 18V38C0 40.2 1.8 42 4 42H28C30.2 42 32 40.2 32 38V18C32 15.8 30.2 14 28 14ZM28 38H4V18H28V38Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </section>
+      <section id="level1" #Level3>
+        <div class="row">
+          <div class="section-header col-md-12">
+            <h2 class="level-name">Nível 3</h2>
             <span class="level-status">
               <svg
                 width="32"
@@ -71,6 +208,103 @@
           </div>
         </div>
       </section>
+
+    </div>
+  </div>
+</div>
+
+ -->
+
+
+
+
+ <div class="container-fluid">
+  <div class="level-nav col-md-1">
+    <ul id="levels">
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 1}">
+        <button (click)="getAllPlayerVideos(1)">1</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 2}">
+        <button (click)="getAllPlayerVideos(2)">2</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 3}">
+        <button (click)="getAllPlayerVideos(3)">3</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 4}">
+        <button (click)="getAllPlayerVideos(4)">4</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 5}">
+        <button (click)="getAllPlayerVideos(5)">5</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 6}">
+        <button (click)="getAllPlayerVideos(6)">6</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 7}">
+        <button (click)="getAllPlayerVideos(7)">7</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 8}">
+        <button (click)="getAllPlayerVideos(8)">8</button>
+      </li>
+      <li class="level-item unlocked" [ngClass]="{'active': currentActive === 9}">
+        <button (click)="getAllPlayerVideos(9)">9</button>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div id="main" class="exercisesContainer">
+      <div *ngFor="let video_level of all_videos; index as i">
+        <section id="level1" #Level{{i+1}}>
+          <div class="row">
+            <div class="section-header col-md-12">
+              <h2 class="level-name">Nível {{i+1}}</h2>
+              <span class="level-status">
+                <svg
+                  width="32"
+                  height="42"
+                  viewBox="0 0 32 42"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16 32C18.2 32 20 30.2 20 28C20 25.8 18.2 24 16 24C13.8 24 12 25.8 12 28C12 30.2 13.8 32 16 32ZM28 14H26V10C26 4.48 21.52 0 16 0C10.48 0 6 4.48 6 10H9.8C9.8 6.58 12.58 3.8 16 3.8C19.42 3.8 22.2 6.58 22.2 10V14H4C1.8 14 0 15.8 0 18V38C0 40.2 1.8 42 4 42H28C30.2 42 32 40.2 32 38V18C32 15.8 30.2 14 28 14ZM28 38H4V18H28V38Z"
+                    fill="black"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4" *ngFor="let video of video_level">
+              <div class="video-card" (click)="goToExerciseDetail(video.exercise_level, video.exercise_number, video.video_path)">
+                <div class="image-container">
+                  <div class="video-bg">
+                    <video class="exercise-video" controls muted="muted">
+                      <source src="{{ video.video_path }}" type="video/mp4" />
+                    </video>
+                  </div>
+                  <div class="image-overlay"></div>
+                </div>
+                <div class="card-interactions">
+                  <h4 class="card-title">{{ video.video_name }}</h4>
+                  <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam
+                  </p>
+                  <div class="row">
+                    <div class="col-md-6" *ngIf="video.video_uploaded" style="background-color: blue;">
+                      <p>Ok icon: <span class="glyphicon glyphicon-ok"></span></p>   
+                    </div>
+                    <div class="col-md-6" *ngIf="login_error" style="background-color:crimson;">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </div>

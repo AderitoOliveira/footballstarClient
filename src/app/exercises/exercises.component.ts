@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { GlobalCommunicationService } from '../_helpers/globalcommunicationservice';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload';
 import { ExerciseService } from './exercises.service';
@@ -17,11 +17,22 @@ const URL_BASE_UPLOAD       = 'http://localhost:3000/api/upload/';
   providers: [ExerciseService]
 })
 
-export class ExercisesComponent implements OnInit {
+export class ExercisesComponent implements OnInit, AfterViewInit  {
 
-  videos : any = [];
+  @ViewChild('Level2', {static: false}) level2_Element: ElementRef;
+  @ViewChild('Level3', {static: false}) level3_Element: ElementRef;
+
+  all_videos     : any = [];
+  videos_level_1 : any = [];
+  videos_level_2 : any = [];
   private player_id         : number;
   maxFileSize = 20 * 1024 * 1024; // modify this to your desired max file size
+  private showLevel         : boolean;
+  private level_id          : number = 2;
+  public currentActive      = 1;
+  public level2_Offset      : number = null;
+  public level2_OffsetBottom      : number = null;
+  public level3_Offset      : number = null;
 
   public uploader: FileUploader = new FileUploader({
     itemAlias: 'image',
@@ -57,8 +68,18 @@ export class ExercisesComponent implements OnInit {
       alert(message);
     };
 
-    this.getAllPlayerVideos(1);
+    /* for(let i=1; i < 3; i++) {
+      let var_name = 'this.videos_level_' + i;
+      this.getAllPlayerVideos(i, var_name);
+    } */
 
+    this.getAllPlayerVideos(1);
+    this.getAllPlayerVideos(2);
+  }
+
+  ngAfterViewInit() {
+    this.level2_Offset        = this.level2_Element.nativeElement.offsetTop;
+    this.level3_Offset        = this.level3_Element.nativeElement.offsetTop;
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -66,14 +87,24 @@ export class ExercisesComponent implements OnInit {
     // 200 is the height from bottom from where you want to trigger the infintie scroll, can we zero to detect bottom of window
     if ((document.body.clientHeight + window.scrollY + 0) >= document.body.scrollHeight) {
         console.log('tiggred');
+        this.showLevel = true;
+    } 
+    if (window.pageYOffset <= (this.level2_Offset + 2000)) {
+      this.currentActive = 1;
     }
+    if (window.pageYOffset >= (this.level2_Offset + 2700)) {
+      this.currentActive = 2;
+    }
+    if (window.pageYOffset >= (this.level3_Offset + 5450) && window.pageYOffset < document.body.scrollHeight) {
+      this.currentActive = 3;
+    }
+    console.log("window.pageYOffset: " + window.pageYOffset + " --> this.level2_Offset: " + this.level2_Offset + " --> this.level3_Offset: " + this.level3_Offset); 
   }
 
   getAllPlayerVideos(exercise_level : number) : any {
     this.exerciseService.getVideosOfExerciseLevel(exercise_level, this.player_id).subscribe(data=> {
     console.log(data); 
-    this.videos = [];
-    this.uploader.queue = [];
+    let videos_level = [];
 
     for(let i=0; i < data.length; i++) {
       let exercise_level  = data[i].EXERCISE_LEVEL;
@@ -93,9 +124,11 @@ export class ExercisesComponent implements OnInit {
         video_reviewed  : video_reviewed
       }
 
-      this.videos.push(video_structure);
+      videos_level.push(video_structure);
     }
 
+    this.all_videos.push(videos_level);
+    
     });
   }
 
@@ -110,7 +143,7 @@ export class ExercisesComponent implements OnInit {
   }
  
  
-  uploadVideoOfExercise(video_index : number, exercise_level : number, exercise_id : number) {
+  /* uploadVideoOfExercise(video_index : number, exercise_level : number, exercise_id : number) {
     console.log(exercise_level);
     console.log(exercise_id);
 
@@ -118,30 +151,15 @@ export class ExercisesComponent implements OnInit {
       item.url = 'http://localhost:3000/api/upload/' + this.player_id;
     };
 
-    /* 
-    this.uploader.onCompleteItem = (item: any, status: any) => {
-      if(JSON.parse(status).success == true) {
-        console.log('Uploaded File Details:', item);
-        //this.videoService.uploadVideoInfoToDatabase(this.player_id, item._file.name);
-        let video_structure = {
-          video_path  : URL_BASE + this.player_id + '/' + item._file.name,
-          video_name  : item._file.name
-        }
-  
-        this.videos.push(video_structure);
-        //location.reload();
-      }
-    }; */
-
     this.uploader.uploadAll();
 
     this.videos[video_index].file_loaded = true;
 
-  }
+  } */
 
-  selectedFileOnChanged(index : number) {
+  /* selectedFileOnChanged(index : number) {
     this.videos[index].file_loaded = true;
-  }
+  } */
 
   goToExerciseDetail(exercise_level : number, exercise_number : number, video_path : string) {
 
