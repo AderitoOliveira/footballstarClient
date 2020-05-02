@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { GlobalCommunicationService } from '../_helpers/globalcommunicationservice';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload';
 import { ExerciseService } from './exercises.service';
@@ -16,6 +16,7 @@ const URL_BASE_UPLOAD       = 'http://localhost:3000/api/upload/';
   styleUrls: ['./exercises.component.scss'],
   providers: [ExerciseService]
 })
+
 export class ExercisesComponent implements OnInit {
 
   videos : any = [];
@@ -56,46 +57,16 @@ export class ExercisesComponent implements OnInit {
       alert(message);
     };
 
-    /* this.uploader.onBeforeUploadItem = (item: any) => {
-      item.url = 'http://localhost:3000/api/upload/' + this.player_id;
-    }
-
-    this.uploader.onAfterAddingFile = (file) => {
-      file.withCredentials = false;
-    };
-    this.uploader.onCompleteItem = (item: any, status: any) => {
-      if(JSON.parse(status).success == true) {
-        console.log('Uploaded File Details:', item);
-        //this.videoService.uploadVideoInfoToDatabase(this.player_id, item._file.name);
-        let video_structure = {
-          video_path  : URL_BASE + this.player_id + '/' + item._file.name,
-          video_name  : item._file.name
-        }
-  
-        this.videos.push(video_structure);
-        //location.reload();
-      }
-    }; */
-
-    /* this.uploader.onWhenAddingFileFailed = (item, filter) => {
-      let message = '';
-      switch (filter.name) {
-        case 'fileSize':
-          message = 'Warning ! \nThe uploaded file \"' + item.name + '\" is ' + this.formatBytes(item.size) + ', this exceeds the maximum allowed size of ' + this.formatBytes(this.maxFileSize);
-          break;
-        default:
-          message = 'Error trying to upload file '+item.name;
-          break;
-      }
-  
-      alert(message);
-    }; */
-    /* this.uploader.onBeforeUploadItem = (item: any) => {
-      item.url = 'http://localhost:3000/api/upload/' + this.player_id;
-    } */
-
     this.getAllPlayerVideos(1);
 
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event) {
+    // 200 is the height from bottom from where you want to trigger the infintie scroll, can we zero to detect bottom of window
+    if ((document.body.clientHeight + window.scrollY + 0) >= document.body.scrollHeight) {
+        console.log('tiggred');
+    }
   }
 
   getAllPlayerVideos(exercise_level : number) : any {
@@ -108,6 +79,8 @@ export class ExercisesComponent implements OnInit {
       let exercise_level  = data[i].EXERCISE_LEVEL;
       let video_name      = data[i].VIDEO_NAME;
       let exercise_number = data[i].EXERCISE_NUMBER;
+      let video_uploaded  = data[i].VIDEO_UPLOADED;
+      let video_reviewed  = data[i].VIDEO_REVIEWED;
       console.log("XPTO: " + data[i]);
 
       let video_structure = {
@@ -115,7 +88,9 @@ export class ExercisesComponent implements OnInit {
         video_name      : video_name,
         exercise_level  : 1,
         exercise_number : exercise_number,
-        file_loaded     : false
+        file_loaded     : false,
+        video_uploaded  : video_uploaded,
+        video_reviewed  : video_reviewed
       }
 
       this.videos.push(video_structure);
