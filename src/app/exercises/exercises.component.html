@@ -253,7 +253,8 @@
   <div class="row">
     <div id="main" class="exercisesContainer">
       <div *ngFor="let video_level of all_videos; index as i">
-        <section id="level1" #Level{{i+1}}>
+       <!-- <start> -->
+        <section id="level1" #Level>
           <div class="row">
             <div class="section-header col-md-12">
               <h2 class="level-name">Nível {{i+1}}</h2>
@@ -274,7 +275,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4" *ngFor="let video of video_level">
+            <div class="col-md-4" *ngFor="let video of video_level.videos_level">
               <div class="video-card" (click)="goToExerciseDetail(video.exercise_level, video.exercise_number, video.video_path)">
                 <div class="image-container">
                   <div class="video-bg">
@@ -304,6 +305,7 @@
             </div>
           </div>
         </section>
+       <!-- </start> -->
       </div>
     </div>
   </div>
