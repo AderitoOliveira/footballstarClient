@@ -21,6 +21,8 @@ import { VideosComponent } from './videos/videos.component';
 import { AdminComponent } from './admin/admin.component';
 import { ExercisesComponent } from './exercises/exercises.component';
 import { ExercisesDetailComponent } from './exercises-detail/exercises-detail.component';
+import { ValidateexerciseComponent } from './admin/validateexercise/validateexercise.component';
+import { ValidateexercisedetailComponent } from './admin/validateexercisedetail/validateexercisedetail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ExercisesDetailComponent } from './exercises-detail/exercises-detail.co
     VideosComponent,
     AdminComponent,
     ExercisesComponent,
-    ExercisesDetailComponent
+    ExercisesDetailComponent,
+    ValidateexerciseComponent,
+    ValidateexercisedetailComponent
   ],
   imports: [
     BrowserModule,

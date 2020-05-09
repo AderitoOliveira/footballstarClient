@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent} from './admin/admin.component';
+import { ValidateexerciseComponent } from './admin/validateexercise/validateexercise.component';
+import { ValidateexercisedetailComponent } from './admin/validateexercisedetail/validateexercisedetail.component';
 import { PlayerComponent} from './player/player.component';
 import { LoginComponent} from './login/login.component';
 import { VideosComponent} from './videos/videos.component';
@@ -20,7 +22,12 @@ const routes: Routes = [
       { path: 'exercises_detail',   canActivate: [AuthGuard], component: ExercisesDetailComponent, pathMatch: 'full' } */
     ]
   },
-  { path: 'admin',   canActivate: [AuthGuard], component: AdminComponent, pathMatch: 'full',  data: {roles: [Role.Admin] } },
+  { path: 'admin',   canActivate: [AuthGuard], component: AdminComponent, pathMatch: 'prefix',  data: {roles: [Role.Admin] }, 
+    children: [
+      { path: 'validate_exercise', component: ValidateexerciseComponent, canActivate: [AuthGuard], pathMatch: 'full'},
+      { path: 'validate_exercise_detail',   canActivate: [AuthGuard], component: ValidateexercisedetailComponent, pathMatch: 'full'} 
+    ]
+  },
   { path: '',   component: LoginComponent, pathMatch: 'full' }
 ];
 
