@@ -124,41 +124,6 @@ export class ExercisesComponent implements OnInit, AfterViewInit  {
     console.log(" --> this.level2_start: " + this.all_levels_position[2]); 
   }
 
-  /* getAllPlayerVideos(exercise_level : number) : any {
-    this.exerciseService.getVideosOfExerciseLevel(exercise_level, this.player_id).subscribe(data=> {
-    console.log(data); 
-    let videos_level    = [];
-
-    for(let i=0; i < data.length; i++) {
-      let exercise_level  = data[i].EXERCISE_LEVEL;
-      let video_name      = data[i].VIDEO_NAME;
-      let exercise_number = data[i].EXERCISE_NUMBER;
-      let video_uploaded  = data[i].VIDEO_UPLOADED;
-      let video_reviewed  = data[i].VIDEO_REVIEWED;
-      console.log("XPTO: " + data[i]);
-
-      let video_structure = {
-        video_path      : URL_BASE + exercise_level + '/' + video_name,
-        video_name      : video_name,
-        exercise_level  : 1,
-        exercise_number : exercise_number,
-        file_loaded     : false,
-        video_uploaded  : video_uploaded,
-        video_reviewed  : video_reviewed
-      }
-
-      videos_level.push(video_structure);
-    }
-
-    let video_level_structrue = {
-      exercise_level : '#Level' + exercise_level,
-      videos_level : videos_level
-    }
-    this.all_videos.push(video_level_structrue);
-    console.log("ALL_VIDEOS_ARRAY: " + exercise_level + " --> " + this.all_videos[exercise_level-1].videos_level)
-    });
-  } */
-
 
   getAllPlayerVideos(exercise_level : number) : any {
     this.exerciseService.getVideosOfExerciseLevel(exercise_level, this.player_id).subscribe(data=> {
@@ -196,12 +161,13 @@ export class ExercisesComponent implements OnInit, AfterViewInit  {
     this.videos[index].file_loaded = true;
   } */
 
-  goToExerciseDetail(exercise_level : number, exercise_number : number, video_path : string) {
+  goToExerciseDetail(exercise_level : number, exercise_number : number, exercise_id : number, video_path : string) {
 
     let detailData = {
       video_path      : video_path,
       exercise_level  : exercise_level,
-      exercise_number : exercise_number
+      exercise_number : exercise_number,
+      exercise_id     : exercise_id
     }
 
     this.globalCommunictionService.changeDataExchange(detailData);

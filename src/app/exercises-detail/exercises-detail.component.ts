@@ -20,12 +20,13 @@ const URL_BASE  = 'http://localhost:3000/video/';
 })
 export class ExercisesDetailComponent implements OnInit {
 
-  public video_path : string;
-  public excercise_level : number;
+  public video_path       : string;
+  public excercise_level  : number;
   public excercise_number : number;
-  private user : User;
-  private player_id : number;
-  public dataFromParent : excerciseDetailData;
+  public excercise_id     : number;
+  private user            : User;
+  private player_id       : number;
+  public dataFromParent   : excerciseDetailData;
 
   public uploader: FileUploader = new FileUploader({
     itemAlias: 'image'
@@ -52,9 +53,10 @@ export class ExercisesDetailComponent implements OnInit {
             this.video_path       = data.video_path;
             this.excercise_level  = data.exercise_level;
             this.excercise_number = data.exercise_number
+            this.excercise_id =     data.exercise_id
     });
-    console.log(this.video_path);
-    console.log(this.excercise_level);
+    console.log("this.video_path: " + this.video_path);
+    console.log("this.excercise_level" + this.excercise_level);
 
     this.globalCommunicationService.changeData("Os meus Vídeos");
 
@@ -68,7 +70,7 @@ export class ExercisesDetailComponent implements OnInit {
     this.uploader.onCompleteItem = (item: any, status: any) => {
       if(JSON.parse(status).success == true) {
         console.log('Uploaded File Details:', item);
-        this.exerciseDetailService.uploadVideoInfoToDatabase(this.player_id, item._file.name, this.excercise_level, this.excercise_number);
+        this.exerciseDetailService.uploadVideoInfoToDatabase(this.player_id, item._file.name, this.excercise_level, this.excercise_number, this.excercise_id);
         this.alertService.success('O Ficheiro foi carregado com Sucesso!!'); //, { autoClose: true });
         let video_structure = {
           video_path  : URL_BASE + this.player_id + '/' + item._file.name,

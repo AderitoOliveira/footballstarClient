@@ -276,7 +276,7 @@
           </div>
           <div class="row">
             <div class="col-md-4" *ngFor="let video of video_level.videos_level">
-              <div class="video-card" (click)="goToExerciseDetail(video.exercise_level, video.exercise_number, video.video_path)">
+              <div class="video-card" (click)="goToExerciseDetail(video.exercise_level, video.exercise_number, video.exercise_id, video.video_path)">
                 <div class="image-container">
                   <div class="video-bg">
                     <video class="exercise-video" controls muted="muted">
