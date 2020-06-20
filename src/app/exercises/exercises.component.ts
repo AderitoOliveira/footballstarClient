@@ -111,7 +111,7 @@ export class ExercisesComponent implements OnInit, AfterViewInit  {
       this.current_level_position = this.current_level_position + 1;
       this.currentActive = this.currentActive + 1;
     }
-    if (window.pageYOffset <= (this.all_levels_position[this.current_level_position - 1]) -100) {
+    if (window.pageYOffset <= (this.all_levels_position[this.current_level_position - 1]) + 1000) {
       this.current_level_position = this.current_level_position - 1;
       this.currentActive = this.currentActive - 1;
     }

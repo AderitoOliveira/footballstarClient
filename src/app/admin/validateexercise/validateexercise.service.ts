@@ -9,15 +9,21 @@ export class ValidateExerciseService {
     httpdata = <any>{};
 
     constructor(private httpClient: HttpClient) { }
-    
-    getVideosToReview(level_id : number, player_id : number): any {
+
+    getAllExercise(): any {
       
-        console.log("Inside getVideosOfExerciseLevel");
+        console.log("Inside getAllExerciselevels");
+
+        return this.httpClient.get(`${environment.apiUrl}/getAllExerciseLevels/`).pipe(map((res:any) => res)) 
+    }
+    
+    getVideosOfLevelToReview(exercise_level : number): any {
+      
+        console.log("Inside getVideosOfLevelToReview");
 
         let params = new HttpParams();
-        params = params.append('level_id', '' +level_id);
-        //params = params.append('player_id', '' + player_id);
+        params = params.append('exercise_level', '' + exercise_level);
 
-        return this.httpClient.get(`${environment.apiUrl}/videosToReview/`, { params: params }).pipe(map((res:any) => res)) 
+        return this.httpClient.get(`${environment.apiUrl}/getVideosFromLevelToReview/`, { params: params }).pipe(map((res:any) => res)) 
     }
 }

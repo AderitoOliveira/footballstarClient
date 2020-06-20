@@ -1,7 +1,32 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row form-heading-wrap">
         <div id="main" class="col-12">
-            <p>validateexercise works!</p>            
+            <ul id="tech-sheet-tabs" class="toggle-wrap">
+                <div class="row">
+                    <li *ngFor="let exercise_level of number_of_exercise_levels;  index as i" class="toggle-item col-md-1" [class.active]="selected_exercise_level===exercise_level.Level">
+                        <a (click)="getExercisesToValidate(i, exercise_level)" aria-controls="one" role="tab" class="toggle-button" data-toggle="tab">
+                            {{exercise_level.Level}}
+                        </a>
+                        <span class="notification">{{exercise_level.ExercisesToReview}}</span>
+                    </li>
+                </div>
+            </ul>
+            <div class="tab-content">
+                <div class="row exercise-header">
+                    <div class="col-md-3">Nome</div>
+                    <div class="col-md-3">Apelido</div>
+                    <div class="col-md-3">Número do Exercício</div>
+                    <div class="col-md-3">Id do Exercício</div>
+                </div>
+                <div *ngFor="let video of exercise_videos_to_review" class="exercise_rows">
+                    <div class="row exercise-row">
+                    <div class="col-md-3">{{video.FIRST_NAME}}</div>
+                    <div class="col-md-3">{{video.LAST_NAME}}</div>
+                    <div class="col-md-3">{{video.EXERCISE_NUMBER}}</div>
+                    <div class="col-md-3">{{video.EXERCISE_ID}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
