@@ -19,11 +19,16 @@
                     <div class="col-md-3">Id do Exercício</div>
                 </div>
                 <div *ngFor="let video of exercise_videos_to_review" class="exercise_rows">
-                    <div class="row exercise-row">
-                    <div class="col-md-3">{{video.FIRST_NAME}}</div>
-                    <div class="col-md-3">{{video.LAST_NAME}}</div>
-                    <div class="col-md-3">{{video.EXERCISE_NUMBER}}</div>
-                    <div class="col-md-3">{{video.EXERCISE_ID}}</div>
+                    <div class="row exercise-row" (click)="goToExerciseValidationDetail()">
+                        <div class="col-md-3">{{video.FIRST_NAME}}</div>
+                        <div class="col-md-3">{{video.LAST_NAME}}</div>
+                        <div class="col-md-3">{{video.EXERCISE_NUMBER}}</div>
+                        <div class="col-md-3">{{video.EXERCISE_ID}}</div>
+                        <!-- <div class="col-md-2">
+                            <button (click)="goToExerciseValidationDetail()">
+                                Carregar Ficheiro
+                            </button>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { GlobalCommunicationService } from '../../_helpers/globalcommunicationservice';
 
 import { ValidateExerciseService } from './validateexercise.service';
 
@@ -15,7 +17,8 @@ export class ValidateexerciseComponent implements OnInit {
   exercise_videos_to_review = [];
   final_videos = [];
 
-  constructor(private validateExerciseService : ValidateExerciseService) { 
+  constructor(private validateExerciseService : ValidateExerciseService, private globalCommunictionService: GlobalCommunicationService,
+              private router: Router, private activatedRoute: ActivatedRoute) { 
 
   }
 
@@ -42,5 +45,18 @@ export class ValidateexerciseComponent implements OnInit {
       this.exercise_videos_to_review = data;
     });
 
+  }
+
+  goToExerciseValidationDetail() {
+    console.log('Button clicked');
+    let detailData = {
+      /* video_path      : video_path,
+      exercise_level  : exercise_level,
+      exercise_number : exercise_number,
+      exercise_id     : exercise_id */
+    }
+
+    this.globalCommunictionService.changeDataExchange(detailData);
+    this.router.navigate(['admin','validate_exercise_detail']);
   }
 }
